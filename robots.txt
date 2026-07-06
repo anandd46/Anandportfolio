@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anandd46.github.io/Anand_portfolio/sitemap.xml

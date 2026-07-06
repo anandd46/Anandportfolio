@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anand D — AI Engineer & Software Developer</title>
+<meta name="description" content="Anand D — AI & Data Science engineer building intelligent products with Python, Machine Learning, NLP and full-stack web development.">
+<meta name="theme-color" content="#050816">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Anand D — AI Engineer & Software Developer">
+<meta property="og:description" content="MCA (AI & Data Science) student building intelligent, real-world software. Explore projects, skills and live GitHub activity.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://anandd46.github.io/Anand_portfolio/">
+<meta property="og:image" content="profile.jpeg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anand D — AI Engineer & Software Developer">
+<meta name="twitter:description" content="MCA (AI & Data Science) student building intelligent, real-world software.">
+<meta name="twitter:image" content="profile.jpeg">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%233B82F6%22>A</text></svg>">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== LOADER ===================== -->
+<div id="loader">
+  <div class="loader-inner">
+    <svg class="loader-mark" viewBox="0 0 60 60" width="56" height="56">
+      <circle cx="30" cy="30" r="26" fill="none" stroke="rgba(59,130,246,0.15)" stroke-width="2"/>
+      <circle id="loaderRing" cx="30" cy="30" r="26" fill="none" stroke="url(#loaderGrad)" stroke-width="2" stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="163.4"/>
+      <defs>
+        <linearGradient id="loaderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#3B82F6"/>
+          <stop offset="100%" stop-color="#38BDF8"/>
+        </linearGradient>
+      </defs>
+      <text x="30" y="36" text-anchor="middle" font-family="Space Grotesk" font-size="18" fill="#fff" font-weight="600">A</text>
+    </svg>
+    <div class="loader-text">initializing<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+    <div class="loader-pct" id="loaderPct">0%</div>
+  </div>
+</div>
+
+<!-- ===================== CURSOR ===================== -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ===================== BACKGROUND LAYERS ===================== -->
+<div class="bg-layer">
+  <canvas id="particleCanvas"></canvas>
+  <div class="bg-grid"></div>
+  <div class="bg-blob blob-a"></div>
+  <div class="bg-blob blob-b"></div>
+  <div class="bg-noise"></div>
+  <div class="spotlight" id="spotlight"></div>
+</div>
+
+<!-- ===================== SCROLL PROGRESS ===================== -->
+<div class="scroll-progress"><div class="scroll-progress-bar" id="scrollBar"></div></div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">AD<span class="logo-dot">.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+      <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+      <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+      <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+      <li><a href="#github" class="nav-link" data-section="github">GitHub</a></li>
+      <li><a href="#certifications" class="nav-link" data-section="certifications">Certificates</a></li>
+      <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" id="cmdkBtn" title="Command palette (Ctrl+K)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>
+        <span class="kbd">⌘K</span>
+      </button>
+      <button class="icon-btn" id="themeBtn" title="Toggle theme">
+        <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="Anand_D_Resume.pdf" download class="btn btn-sm btn-primary" id="navResumeBtn">Resume</a>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow reveal-up"><span class="pulse-dot"></span> Available for internships &amp; junior AI/SWE roles</div>
+      <h1 class="hero-title reveal-up delay-1">
+        Hi, I'm <span class="grad-text">Anand D</span><br>
+        I build <span class="typing" id="typingText"></span><span class="caret">|</span>
+      </h1>
+      <p class="hero-sub reveal-up delay-2">
+        MCA (AI &amp; Data Science) candidate at Amrita Vishwa Vidyapeetham, Mysuru. I turn machine learning research and
+        clean engineering into software people actually use — from campus chatbots to coding mentors.
+      </p>
+      <div class="hero-actions reveal-up delay-3">
+        <a href="#projects" class="btn btn-primary btn-glow">View Projects</a>
+        <a href="Anand_D_Resume.pdf" download class="btn btn-outline" id="heroResumeBtn">Download Resume</a>
+        <a href="#contact" class="btn btn-ghost">Hire Me →</a>
+      </div>
+      <div class="hero-socials reveal-up delay-3">
+        <a href="https://github.com/anandd46" target="_blank" rel="noopener" aria-label="GitHub" class="social-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.75.4-1.27.73-1.56-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17v3.22c0 .3.21.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/anand-d-574768290" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.11 20.45H3.56V9h3.55v11.45z"/></svg>
+        </a>
+        <a href="mailto:anandrl120@gmail.com" aria-label="Email" class="social-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal-scale delay-2">
+      <div class="orbit-wrap" id="orbitWrap">
+        <div class="orbit-center">
+          <div class="orbit-glow"></div>
+          <img src="profile.jpeg" alt="Anand D" class="orbit-photo">
+        </div>
+        <div class="orbit-ring ring-1"></div>
+        <div class="orbit-ring ring-2"></div>
+        <div class="orbit-ring ring-3"></div>
+        <!-- orbit items injected by JS -->
+      </div>
+      <div class="orbit-tooltip" id="orbitTooltip"></div>
+    </div>
+  </div>
+
+  <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+    <span>Scroll</span>
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+  </a>
+</header>
+
+<main>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="section-head reveal-up">
+      <span class="section-eyebrow">About</span>
+      <h2 class="section-title">The short version, and the long one</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text reveal-up">
+        <p>I'm an AI &amp; Data Science postgraduate student who likes building things that answer a question or solve a
+        small annoying problem — a chatbot that actually knows the campus, a debugger that explains itself, a tracker
+        that makes spreadsheets unnecessary. I care more about whether it works than whether it's trendy.</p>
+        <p>My toolkit spans classic software engineering (Python, Java, C#, databases) and applied ML (NLP, scikit-learn,
+        LLM APIs), which means I can take a model from a notebook to a product with an interface someone would actually
+        open twice.</p>
+
+        <div class="mission-box">
+          <div class="mission-item">
+            <span class="mission-label">Mission</span>
+            <p>Build AI tools that remove friction from real workflows, not demo-ware.</p>
+          </div>
+          <div class="mission-item">
+            <span class="mission-label">Currently learning</span>
+            <p>Retrieval-augmented generation, system design, and production ML deployment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-stats reveal-up">
+        <div class="stat-card" data-count="4"><span class="stat-num" data-target="4">0</span><span class="stat-label">Projects Shipped</span></div>
+        <div class="stat-card" data-count="5"><span class="stat-num" data-target="5">0</span><span class="stat-label">Certifications</span></div>
+        <div class="stat-card" data-count="7"><span class="stat-num" data-target="7">0</span><span class="stat-label">Core Technologies</span></div>
+        <div class="stat-card" id="repoStatCard"><span class="stat-num" data-target="0" id="repoCountStat">0</span><span class="stat-label">GitHub Repos</span></div>
+      </div>
+    </div>
+
+    <div class="timeline reveal-up">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-year">2025 — 2027</span>
+          <h3>MCA, AI &amp; Data Science</h3>
+          <p>Amrita Vishwa Vidyapeetham, Mysuru · CGPA 7.04/10</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-year">2022 — 2025</span>
+          <h3>BCA, Computer Science</h3>
+          <p>Amrita Vishwa Vidyapeetham, Mysuru · CGPA 6.55/10</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-year">2022</span>
+          <h3>Class XII — PCMB</h3>
+          <p>GHSS, Panahalli, State Board</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-year">2020</span>
+          <h3>Class X</h3>
+          <p>Don Bosco Matriculation Higher Secondary School, Thalavadi</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section class="section section-alt" id="skills">
+  <div class="section-inner">
+    <div class="section-head reveal-up">
+      <span class="section-eyebrow">Skills</span>
+      <h2 class="section-title">What I actually work with</h2>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-card reveal-up">
+        <div class="skill-card-head">
+          <div class="skill-icon" style="--c:#3B82F6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <h3>Programming</h3>
+        </div>
+        <div class="skill-bars">
+          <div class="skill-row"><span>Python</span><div class="bar"><div class="bar-fill" data-pct="90"></div></div></div>
+          <div class="skill-row"><span>Java</span><div class="bar"><div class="bar-fill" data-pct="75"></div></div></div>
+          <div class="skill-row"><span>C#</span><div class="bar"><div class="bar-fill" data-pct="70"></div></div></div>
+          <div class="skill-row"><span>C</span><div class="bar"><div class="bar-fill" data-pct="68"></div></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal-up">
+        <div class="skill-card-head">
+          <div class="skill-icon" style="--c:#38BDF8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1m17.36-6.36l-4.24 4.24m-6.24 6.24l-4.24 4.24m0-14.72l4.24 4.24m6.24 6.24l4.24 4.24"/></svg></div>
+          <h3>AI &amp; Machine Learning</h3>
+        </div>
+        <div class="skill-bars">
+          <div class="skill-row"><span>Machine Learning</span><div class="bar"><div class="bar-fill" data-pct="82"></div></div></div>
+          <div class="skill-row"><span>NLP</span><div class="bar"><div class="bar-fill" data-pct="78"></div></div></div>
+          <div class="skill-row"><span>LLMs / Generative AI</span><div class="bar"><div class="bar-fill" data-pct="80"></div></div></div>
+          <div class="skill-row"><span>Scikit-learn / Pandas / NumPy</span><div class="bar"><div class="bar-fill" data-pct="80"></div></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal-up">
+        <div class="skill-card-head">
+          <div class="skill-icon" style="--c:#2563EB"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 21V9"/></svg></div>
+          <h3>Web Development</h3>
+        </div>
+        <div class="skill-bars">
+          <div class="skill-row"><span>HTML / CSS</span><div class="bar"><div class="bar-fill" data-pct="88"></div></div></div>
+          <div class="skill-row"><span>JavaScript</span><div class="bar"><div class="bar-fill" data-pct="80"></div></div></div>
+          <div class="skill-row"><span>React</span><div class="bar"><div class="bar-fill" data-pct="65"></div></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal-up">
+        <div class="skill-card-head">
+          <div class="skill-icon" style="--c:#60A5FA"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg></div>
+          <h3>Databases</h3>
+        </div>
+        <div class="skill-bars">
+          <div class="skill-row"><span>MySQL</span><div class="bar"><div class="bar-fill" data-pct="76"></div></div></div>
+          <div class="skill-row"><span>MongoDB</span><div class="bar"><div class="bar-fill" data-pct="65"></div></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal-up">
+        <div class="skill-card-head">
+          <div class="skill-icon" style="--c:#38BDF8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg></div>
+          <h3>Tools</h3>
+        </div>
+        <div class="skill-bars">
+          <div class="skill-row"><span>Git / GitHub</span><div class="bar"><div class="bar-fill" data-pct="85"></div></div></div>
+          <div class="skill-row"><span>VS Code</span><div class="bar"><div class="bar-fill" data-pct="90"></div></div></div>
+          <div class="skill-row"><span>Figma</span><div class="bar"><div class="bar-fill" data-pct="60"></div></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card skill-card-ring reveal-up">
+        <div class="skill-card-head">
+          <div class="skill-icon" style="--c:#2563EB"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div>
+          <h3>Focus Areas</h3>
+        </div>
+        <div class="ring-grid">
+          <div class="ring-item"><svg viewBox="0 0 36 36" class="circular-ring"><path class="ring-bg" d="M18 2a16 16 0 1 1 0 32 16 16 0 1 1 0-32"/><path class="ring-fg" data-pct="82" d="M18 2a16 16 0 1 1 0 32 16 16 0 1 1 0-32"/></svg><span>AI Product Design</span></div>
+          <div class="ring-item"><svg viewBox="0 0 36 36" class="circular-ring"><path class="ring-bg" d="M18 2a16 16 0 1 1 0 32 16 16 0 1 1 0-32"/><path class="ring-fg" data-pct="75" d="M18 2a16 16 0 1 1 0 32 16 16 0 1 1 0-32"/></svg><span>Problem Solving</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FEATURED PROJECTS ===================== -->
+<section class="section" id="projects">
+  <div class="section-inner">
+    <div class="section-head reveal-up">
+      <span class="section-eyebrow">Work</span>
+      <h2 class="section-title">Featured Projects</h2>
+    </div>
+
+    <div class="project-filters reveal-up" id="projectFilters">
+      <button class="filter-chip active" data-filter="all">All</button>
+      <button class="filter-chip" data-filter="ai">AI / ML</button>
+      <button class="filter-chip" data-filter="web">Web</button>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid">
+
+      <article class="project-card" data-cat="ai">
+        <div class="project-visual">
+          <div class="mini-demo chat-demo">
+            <div class="chat-msg bot">Hey! Ask me about hostel fees, exam dates, or the library timetable.</div>
+            <div class="chat-msg user">When's the CS lab reopening?</div>
+            <div class="chat-msg bot typing-demo"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-top">
+            <h3>AI Chatbot for Smart Communities</h3>
+            <span class="project-tag">Research Project</span>
+          </div>
+          <p>A campus AI chatbot that resolves academic and administrative queries instantly, using NLP intent
+          matching and a feedback loop to keep improving its own answers.</p>
+          <div class="tech-badges">
+            <span>Python</span><span>NLP</span><span>Machine Learning</span><span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <button class="project-expand" data-target="detail-1">Details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="project-detail" id="detail-1">
+            <p><strong>Problem:</strong> Students repeatedly asked staff the same routine questions, overloading the admin office during peak periods.</p>
+            <p><strong>Solution:</strong> An NLP-driven chatbot trained to classify intents and pull answers from a structured knowledge base, with a thumbs up/down loop to flag weak responses for review.</p>
+            <p><strong>Impact:</strong> Instant 24/7 answers for common queries, freeing staff time for complex cases.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card" data-cat="ai">
+        <div class="project-visual">
+          <div class="mini-demo code-demo">
+            <div class="code-line"><span class="code-kw">def</span> <span class="code-fn">explain_bug</span>(code):</div>
+            <div class="code-line indent"><span class="code-kw">return</span> ai.debug(code)</div>
+            <div class="code-cursor-line">&gt; Analyzing stack trace<span class="blink-caret">_</span></div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-top">
+            <h3>GuruCode AI — Smart Coding Mentor</h3>
+            <span class="project-tag">AI Tool</span>
+          </div>
+          <p>A multilingual coding assistant that explains DSA concepts, catches bugs in real time, and walks
+          through fixes interactively instead of just dumping a corrected snippet.</p>
+          <div class="tech-badges">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span><span>Gemini API</span>
+          </div>
+          <button class="project-expand" data-target="detail-2">Details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="project-detail" id="detail-2">
+            <p><strong>Problem:</strong> Beginners get correct-but-unexplained answers from most AI coding tools, which doesn't build understanding.</p>
+            <p><strong>Solution:</strong> A mentor-style interface built on the Gemini API that detects errors, explains the "why," and supports multiple languages for DSA learners.</p>
+            <p><strong>Impact:</strong> Turns debugging into a teaching moment instead of a copy-paste fix.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card" data-cat="web">
+        <div class="project-visual">
+          <div class="mini-demo tracker-demo">
+            <div class="tracker-row"><span>Food</span><span class="tracker-amt">₹1,240</span></div>
+            <div class="tracker-row"><span>Transport</span><span class="tracker-amt">₹560</span></div>
+            <div class="tracker-bar"><div style="width:68%"></div></div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-top">
+            <h3>Web-Based Expense Tracker</h3>
+            <span class="project-tag">Full-Stack</span>
+          </div>
+          <p>A web app for logging and analyzing daily spend, with automated calculations and persistent storage
+          so totals stay accurate without manual spreadsheet work.</p>
+          <div class="tech-badges">
+            <span>C#</span><span>MySQL</span><span>HTML</span><span>CSS</span>
+          </div>
+          <button class="project-expand" data-target="detail-3">Details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="project-detail" id="detail-3">
+            <p><strong>Problem:</strong> Manually tracked expenses in notes apps get abandoned within a week.</p>
+            <p><strong>Solution:</strong> A C# + MySQL app with category breakdowns and automated running totals.</p>
+            <p><strong>Impact:</strong> Reliable day-to-day financial visibility without spreadsheet upkeep.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card" data-cat="web">
+        <div class="project-visual">
+          <div class="mini-demo portfolio-demo">
+            <div class="pd-nav"><span></span><span></span><span></span></div>
+            <div class="pd-block"></div>
+            <div class="pd-block short"></div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-top">
+            <h3>Personal Portfolio Website</h3>
+            <span class="project-tag">Web</span>
+          </div>
+          <p>An earlier responsive portfolio built to showcase projects, skills, certifications and achievements
+          — the predecessor to the site you're on right now.</p>
+          <div class="tech-badges">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <a href="https://anandd46.github.io/Anand_portfolio/" target="_blank" rel="noopener" class="project-expand" style="text-decoration:none;display:inline-flex;">Live Version <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RECRUITER DASHBOARD ===================== -->
+<section class="section section-alt" id="dashboard">
+  <div class="section-inner">
+    <div class="section-head reveal-up">
+      <span class="section-eyebrow">Overview</span>
+      <h2 class="section-title">Recruiter Dashboard</h2>
+      <p class="section-desc">A quick scan of where things stand — pulled live from GitHub where possible.</p>
+    </div>
+
+    <div class="dash-grid reveal-up">
+      <div class="dash-card"><span class="dash-val" data-target="4">0</span><span class="dash-label">Projects Completed</span></div>
+      <div class="dash-card"><span class="dash-val" id="dashRepos" data-target="0">0</span><span class="dash-label">GitHub Repositories</span></div>
+      <div class="dash-card"><span class="dash-val" id="dashStars" data-target="0">0</span><span class="dash-label">GitHub Stars</span></div>
+      <div class="dash-card"><span class="dash-val" id="dashFollowers" data-target="0">0</span><span class="dash-label">GitHub Followers</span></div>
+      <div class="dash-card"><span class="dash-val" data-target="5">0</span><span class="dash-label">Certifications</span></div>
+      <div class="dash-card"><span class="dash-val" data-target="7">0</span><span class="dash-label">Technologies</span></div>
+      <div class="dash-card"><span class="dash-val" data-target="0" id="resumeDlCount">0</span><span class="dash-label">Resume Downloads</span></div>
+      <div class="dash-card dash-status">
+        <span class="status-dot"></span>
+        <span class="dash-label">Available for Work</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GITHUB LIVE ===================== -->
+<section class="section" id="github">
+  <div class="section-inner">
+    <div class="section-head reveal-up">
+      <span class="section-eyebrow">Live</span>
+      <h2 class="section-title">GitHub Activity</h2>
+      <p class="section-desc">Fetched live from the GitHub REST API — no manual updates needed.</p>
+    </div>
+
+    <div class="gh-profile-card reveal-up" id="ghProfileCard">
+      <img id="ghAvatar" class="gh-avatar" src="profile.jpeg" alt="GitHub avatar">
+      <div class="gh-profile-info">
+        <h3 id="ghName">Anand D</h3>
+        <p id="ghBio">AI &amp; Data Science student · building with Python and ML</p>
+        <div class="gh-meta">
+          <span id="ghFollowers">— followers</span>
+          <span id="ghFollowing">— following</span>
+          <span id="ghPublicRepos">— repos</span>
+        </div>
+      </div>
+      <a href="https://github.com/anandd46" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Open Profile</a>
+    </div>
+
+    <div class="gh-toolbar reveal-up">
+      <input type="text" id="repoSearch" class="gh-search" placeholder="Search repositories…">
+      <select id="repoSort" class="gh-select">
+        <option value="updated">Recently updated</option>
+        <option value="stars">Most stars</option>
+        <option value="name">Name (A–Z)</option>
+      </select>
+    </div>
+
+    <div class="repo-grid" id="repoGrid">
+      <div class="repo-skeleton"></div>
+      <div class="repo-skeleton"></div>
+      <div class="repo-skeleton"></div>
+    </div>
+
+    <div class="contrib-block reveal-up">
+      <h3 class="contrib-title">Contribution Snapshot</h3>
+      <div id="contribGraph" class="contrib-graph"></div>
+      <div class="contrib-legend">
+        <span>Less</span>
+        <span class="lvl lvl-0"></span><span class="lvl lvl-1"></span><span class="lvl lvl-2"></span><span class="lvl lvl-3"></span><span class="lvl lvl-4"></span>
+        <span>More</span>
+      </div>
+      <p class="contrib-note" id="contribNote">Loading recent public activity…</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CERTIFICATIONS ===================== -->
+<section class="section section-alt" id="certifications">
+  <div class="section-inner">
+    <div class="section-head reveal-up">
+      <span class="section-eyebrow">Credentials</span>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+
+    <div class="cert-filters reveal-up">
+      <button class="filter-chip active" data-cf="all">All</button>
+      <button class="filter-chip" data-cf="ai">AI / Data</button>
+      <button class="filter-chip" data-cf="dev">Development</button>
+    </div>
+
+    <div class="cert-grid" id="certGrid">
+      <div class="cert-card" data-cf="ai">
+        <div class="cert-top"><span class="cert-icon">◆</span><span class="cert-year">2024</span></div>
+        <h3>Dynamic Programming Camp</h3>
+        <p class="cert-issuer">AlgoUniversity</p>
+        <p class="cert-desc">Dynamic Programming, Matrix Exponentiation, SQRT Decomposition</p>
+      </div>
+      <div class="cert-card" data-cf="ai">
+        <div class="cert-top"><span class="cert-icon">◆</span><span class="cert-year">2024</span></div>
+        <h3>Python</h3>
+        <p class="cert-issuer">Kaggle Learn</p>
+        <p class="cert-desc">Python Programming, Data Structures, Functions, Loops, File Handling</p>
+      </div>
+      <div class="cert-card" data-cf="ai">
+        <div class="cert-top"><span class="cert-icon">◆</span><span class="cert-year">2024</span></div>
+        <h3>Quantitative Research Job Simulation</h3>
+        <p class="cert-issuer">JPMorgan Chase &amp; Co. (Forage)</p>
+        <p class="cert-desc">Data Analysis, Quantitative Research</p>
+      </div>
+      <div class="cert-card" data-cf="dev">
+        <div class="cert-top"><span class="cert-icon">◆</span><span class="cert-year">2023</span></div>
+        <h3>Full Stack Development</h3>
+        <p class="cert-issuer">MyCaptain</p>
+        <p class="cert-desc">Frontend Development, React Native, Firebase, MongoDB</p>
+      </div>
+      <div class="cert-card" data-cf="dev">
+        <div class="cert-top"><span class="cert-icon">◆</span><span class="cert-year">2023</span></div>
+        <h3>Java Bootcamp</h3>
+        <p class="cert-issuer">LetsUpgrade</p>
+        <p class="cert-desc">Object-Oriented Programming, Problem Solving</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TERMINAL ===================== -->
+<section class="section" id="terminal-section">
+  <div class="section-inner">
+    <div class="section-head reveal-up">
+      <span class="section-eyebrow">Interactive</span>
+      <h2 class="section-title">Poke around in a terminal</h2>
+      <p class="section-desc">Try <code>whoami</code>, <code>skills</code>, <code>projects</code>, <code>resume</code>, <code>contact</code>, <code>github</code>, <code>linkedin</code> or <code>help</code>.</p>
+    </div>
+
+    <div class="terminal reveal-up" id="terminalBox">
+      <div class="terminal-bar">
+        <span class="tdot td-r"></span><span class="tdot td-y"></span><span class="tdot td-g"></span>
+        <span class="terminal-title">anand@portfolio: ~</span>
+      </div>
+      <div class="terminal-body" id="terminalBody">
+        <div class="term-line">Welcome. Type <span class="term-hl">help</span> to see available commands.</div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="term-prompt">anand@portfolio:~$</span>
+        <input type="text" id="terminalInput" class="terminal-input" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="section section-alt" id="contact">
+  <div class="section-inner">
+    <div class="section-head reveal-up">
+      <span class="section-eyebrow">Get in touch</span>
+      <h2 class="section-title">Let's build something</h2>
+      <p class="section-desc">Open to internships, junior AI/software roles, and interesting collaborations.</p>
+    </div>
+
+    <div class="contact-grid">
+      <form class="contact-form reveal-up" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cName">Name</label>
+            <input type="text" id="cName" name="name" required>
+            <span class="field-error">Please enter your name</span>
+          </div>
+          <div class="form-field">
+            <label for="cEmail">Email</label>
+            <input type="email" id="cEmail" name="email" required>
+            <span class="field-error">Please enter a valid email</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="cSubject">Subject</label>
+          <input type="text" id="cSubject" name="subject" required>
+          <span class="field-error">Please enter a subject</span>
+        </div>
+        <div class="form-field">
+          <label for="cMessage">Message</label>
+          <textarea id="cMessage" name="message" rows="5" required></textarea>
+          <span class="field-error">Please enter a message</span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-glow" id="contactSubmit">
+          <span>Send Message</span>
+        </button>
+        <p class="form-note" id="formNote"></p>
+      </form>
+
+      <div class="contact-side reveal-up">
+        <div class="contact-card">
+          <span class="contact-label">Email</span>
+          <a href="mailto:anandrl120@gmail.com">anandrl120@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <span class="contact-label">Phone</span>
+          <a href="tel:+916374200753">+91 6374200753</a>
+        </div>
+        <div class="contact-card">
+          <span class="contact-label">Location</span>
+          <span>Mysuru, Karnataka, India</span>
+        </div>
+        <div class="contact-card">
+          <span class="contact-label">Status</span>
+          <span class="status-inline"><span class="status-dot"></span> Available for work</span>
+        </div>
+        <div class="contact-links">
+          <a href="https://github.com/anandd46" target="_blank" rel="noopener" class="btn btn-outline btn-sm">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/anand-d-574768290" target="_blank" rel="noopener" class="btn btn-outline btn-sm">LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <span class="nav-logo">AD<span class="logo-dot">.</span></span>
+      <p>Designed &amp; built from scratch with HTML, CSS and JavaScript.</p>
+    </div>
+    <div class="footer-mid">
+      <span id="lastUpdated">Last updated July 2026</span>
+      <span id="visitorCount">Visit #—</span>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/anandd46" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/anand-d-574768290" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:anandrl120@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== BACK TO TOP ===================== -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- ===================== ASK ABOUT ME WIDGET ===================== -->
+<div class="ask-widget" id="askWidget">
+  <button class="ask-toggle" id="askToggle">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </button>
+  <div class="ask-panel" id="askPanel">
+    <div class="ask-header">
+      <span>Ask about Anand</span>
+      <button id="askClose" class="ask-close">&times;</button>
+    </div>
+    <div class="ask-body" id="askBody">
+      <div class="ask-msg bot">Hi! Ask me things like "what are his skills" or "how do I contact him".</div>
+    </div>
+    <div class="ask-suggestions" id="askSuggestions">
+      <button>What does Anand do?</button>
+      <button>Show me his skills</button>
+      <button>How do I contact him?</button>
+    </div>
+    <div class="ask-input-row">
+      <input type="text" id="askInput" placeholder="Type a question…">
+      <button id="askSend">→</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== COMMAND PALETTE ===================== -->
+<div class="cmdk-overlay" id="cmdkOverlay">
+  <div class="cmdk-box">
+    <div class="cmdk-input-row">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" id="cmdkInput" placeholder="Type a command or search…" autocomplete="off">
+      <span class="kbd">esc</span>
+    </div>
+    <div class="cmdk-list" id="cmdkList"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
